@@ -16,7 +16,15 @@ code {
   display: block !important;
 }
 
+.MuiCheckbox-root {
+  margin-right: 10px !important;
+}
+
+.radio-input {
+  margin-right: 20px;
+}
+
 .MuiButton-root {
   display: block !important;
-  margin-top: 10px !important;
+  margin-right: 20px !important;
 }

@@ -11,7 +11,8 @@ const App: React.FC = () => {
           firstName: "",
           lastName: "",
           isTall: false,
-          cookies: []
+          cookies: [],
+          fruits: ""
         }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
@@ -37,6 +38,14 @@ const App: React.FC = () => {
             <Field name="cookies" type="checkbox" value="lemon polenta" as={Checkbox} />
             <span>Viennese</span>
             <Field name="cookies" type="checkbox" value="viennese" as={Checkbox} />
+
+            <h2>Fruits</h2>
+            <span>Orange</span>
+            <Field name="fruits" type="radio" value="orange" className="radio-input" />
+            <span>Banana</span>
+            <Field name="fruits" type="radio" value="banana" className="radio-input" />
+            <span>Lychee</span>
+            <Field name="fruits" type="radio" value="lychee" className="radio-input" />
 
             <Button
               variant="contained"
