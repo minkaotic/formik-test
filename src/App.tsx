@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Formik } from "formik";
+import { TextField } from '@material-ui/core';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* formik component using render prop syntax
+      formik component requires two props:
+      initial values of the form, and onSubmit function */}
+      <Formik
+        initialValues={{ firstName: "bob" }}
+        onSubmit={(data) => { console.log(data) }}
+      >
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <TextField
+              name="firstName"
+              value={values.firstName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <pre>{JSON.stringify(values, null, 2)}</pre>
+          </form>
+        )}
+      </Formik>
     </div>
   );
 }
