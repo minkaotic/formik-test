@@ -1,12 +1,18 @@
 import React from 'react';
 import { Formik, Field, Form } from "formik";
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Checkbox } from '@material-ui/core';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="form-container">
+      <h1>Formik form</h1>
       <Formik
-        initialValues={{ firstName: "", lastName: "" }}
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          isTall: false,
+          cookies: []
+        }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
           // make async call
@@ -18,24 +24,25 @@ const App: React.FC = () => {
       >
         {({ values, isSubmitting }) => (
           <Form>
-            <div>
-              <Field
-                name="firstName"
-                type="input"
-                as={TextField} />
-            </div>
-            <div>
-              <Field
-                name="lastName"
-                type="input"
-                as={TextField} />
-            </div>
-            <div>
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-              >Submit</Button>
-            </div>
+            <h2>Basic stuff</h2>
+            <Field name="firstName" label="First name" type="input" as={TextField} />
+            <Field name="lastName" label="Last name" type="input" as={TextField} />
+            <span>Is tall?</span>
+            <Field name="isTall" label="Is tall" type="checkbox" as={Checkbox} />
+
+            <h2>Cookies</h2>
+            <span>Choc chip</span>
+            <Field name="cookies" type="checkbox" value="choc chip" as={Checkbox} />
+            <span>Lemon polenta</span>
+            <Field name="cookies" type="checkbox" value="lemon polenta" as={Checkbox} />
+            <span>Viennese</span>
+            <Field name="cookies" type="checkbox" value="viennese" as={Checkbox} />
+
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={isSubmitting}
+            >Submit</Button>
             <pre>{JSON.stringify(values, null, 2)}</pre>
           </Form>
         )}
