@@ -1,18 +1,24 @@
 import React from 'react';
 import { Formik } from "formik";
-import { TextField } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 const App: React.FC = () => {
   return (
     <div>
-      {/* formik component using render prop syntax
-      formik component requires two props:
-      initial values of the form, and onSubmit function */}
       <Formik
-        initialValues={{ firstName: "bob" }}
-        onSubmit={(data) => { console.log(data) }}
+        initialValues={{ firstName: "" }}
+        onSubmit={(data, { setSubmitting }) => {
+          // set submitting to true to disable submit button
+          setSubmitting(true);
+          // make async call
+          setTimeout(() => {
+            console.log(data);
+          }, 2000);
+          // set submitting to false again
+          setSubmitting(false);
+        }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
+        {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <TextField
               name="firstName"
@@ -20,6 +26,12 @@ const App: React.FC = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            <div>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+              >Submit</Button>
+            </div>
             <pre>{JSON.stringify(values, null, 2)}</pre>
           </form>
         )}
