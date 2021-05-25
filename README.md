@@ -27,6 +27,22 @@ Code along from Ben Awad's Youtube tutorial: https://youtu.be/FD50LPJ6bjE
 </Formik>
 ```
 
+## Simplifying things with `<Field />`
+- To avoid passing `onBlur`, `onChange` etc to every single input field, you can simplify things by using Formik's `<Field />` component
+- It even takes in a component which you want the field to render as via an `as` prop
+```js
+<Field name="firstName" type="input" as={TextField} />
+```
+...is equivalent to...
+```js
+<TextField
+  name="firstName"
+  value={values.firstName}
+  onChange={handleChange}
+  onBlur={handleBlur}
+/>
+```
+
 ## Disabling button during form submit
 - The `onSubmit` function optionally offers arguments that can be destructured, for example `setSubmitting`:
 ```js
