@@ -1,31 +1,25 @@
 import React from 'react';
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import { TextField, Button } from '@material-ui/core';
 
 const App: React.FC = () => {
   return (
     <div>
       <Formik
-        initialValues={{ firstName: "" }}
+        initialValues={{ firstName: "", lastName: "" }}
         onSubmit={(data, { setSubmitting }) => {
-          // set submitting to true to disable submit button
           setSubmitting(true);
           // make async call
           setTimeout(() => {
             console.log(data);
           }, 2000);
-          // set submitting to false again
           setSubmitting(false);
         }}
       >
         {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <TextField
-              name="firstName"
-              value={values.firstName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+            <Field name="firstName" type="input" as={TextField} />
+            <Field name="lastName" type="input" as={TextField} />
             <div>
               <Button
                 type="submit"
