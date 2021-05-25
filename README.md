@@ -1,8 +1,7 @@
-# formik-test
+# Formik notes
 Code along from Ben Awad's Youtube tutorial: https://youtu.be/FD50LPJ6bjE
 
-## Notes
-### Basic use
+## Basic use
 - Wrap the form in a `<Formik>` component using render props syntax
 - The Formik component requires two props: initial values of the form, and an `onSubmit` function
 - The `onSubmit` function has a `data` argument representing the form data to be submitted
@@ -28,7 +27,7 @@ Code along from Ben Awad's Youtube tutorial: https://youtu.be/FD50LPJ6bjE
 </Formik>
 ```
 
-### Disabling button during form submit
+## Disabling button during form submit
 - The `onSubmit` function optionally offers arguments that can be destructured, for example `setSubmitting`:
 ```js
 onSubmit={(data, { setSubmitting }) => {
