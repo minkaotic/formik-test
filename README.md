@@ -1,6 +1,10 @@
 # Formik notes
 Code along from Ben Awad's Youtube tutorial: https://youtu.be/FD50LPJ6bjE
 
+- [Basic use](#basic-use)
+- [Simplifying things with `<Field />`](#simplifying-things-with-field-)
+- [Disabling button during form submit](#disabling-button-during-form-submit)
+
 ## Basic use
 - Wrap the form in a `<Formik>` component using render props syntax
 - The Formik component requires two props: initial values of the form, and an `onSubmit` function
@@ -28,7 +32,8 @@ Code along from Ben Awad's Youtube tutorial: https://youtu.be/FD50LPJ6bjE
 ```
 
 ## Simplifying things with `<Field />`
-- To avoid passing `onBlur`, `onChange` etc to every single input field, you can simplify things by using Formik's `<Field />` component
+- To avoid passing `onBlur`, `onChange` etc to every single form field, you can simplify things by using Formik's `<Field />` component
+- This will implicitely cover the `value`, `onChange` and `onBlur` props
 - It even takes in a component which you want the field to render as via an `as` prop
 ```js
 <Field name="firstName" type="input" as={TextField} />
